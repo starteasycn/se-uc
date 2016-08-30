@@ -1,1 +1,5 @@
 rootProject.name = 'seuaa'
+include 'uc-api'
+include 'uc-domain'
+include 'uc-service'
+
