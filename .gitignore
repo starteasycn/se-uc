@@ -89,3 +89,7 @@
 *.iml
 *build/
 *.DS_Store
+
+
+##zookeeper log##
+zookeeper.out

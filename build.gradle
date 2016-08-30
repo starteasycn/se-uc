@@ -186,13 +186,13 @@ subprojects {
         file("src/main/scripts").mkdirs()
 
         /** 填充文件，便于git提交 */
-        file("src/main/java/cn/thinkjoy").mkdirs()
-        file("src/main/java/cn/thinkjoy/package-info.java").createNewFile()
+        file("src/main/java/cn/starteasy").mkdirs()
+        file("src/main/java/cn/starteasy/package-info.java").createNewFile()
         file("src/main/resources").mkdirs()
         file("src/main/resources/spring.xml").createNewFile()
 
-        file("src/test/java/cn/thinkjoy").mkdirs()
-        file("src/test/java/cn/thinkjoy/package-info.java").createNewFile()
+        file("src/test/java/cn/starteasy").mkdirs()
+        file("src/test/java/cn/starteasy/package-info.java").createNewFile()
         file("src/test/resources/spring.xml").createNewFile()
     }
 
