@@ -59,7 +59,7 @@ public class UaaConfiguration extends AuthorizationServerConfigurerAdapter {
                 .antMatchers("/api/account/reset_password/finish").permitAll()
                 .antMatchers("/api/logs/**").hasAuthority(AuthoritiesConstants.ADMIN)
                 .antMatchers("/api/audits/**").hasAuthority(AuthoritiesConstants.ADMIN)
-//                .antMatchers("/api/**").authenticated()
+                .antMatchers("/api/**").authenticated()
                 .antMatchers("/metrics/**").permitAll()
                 .antMatchers("/health/**").permitAll()
                 .antMatchers("/trace/**").permitAll()
@@ -98,7 +98,7 @@ public class UaaConfiguration extends AuthorizationServerConfigurerAdapter {
             .withClient("internal")
             .secret("internal") //only for testing!!! @TODO config or details service..
             .autoApprove(true)
-            .authorizedGrantTypes("client_credentials");
+            .authorizedGrantTypes("implicit","refresh_token", "password", "authorization_code");
     }
 
     @Override
