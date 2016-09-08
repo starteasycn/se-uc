@@ -29,6 +29,7 @@ public class UserDetailsService implements org.springframework.security.core.use
     @Override
     @Transactional
     public UserDetails loadUserByUsername(final String login) {
+        //TODO 增加 api权限的过滤   [如果是 password模式,不做这样的处理]
         log.debug("Authenticating {}", login);
         String lowercaseLogin = login.toLowerCase(Locale.ENGLISH);
         Optional<User> userFromDatabase = userRepository.findOneByLogin(lowercaseLogin);
