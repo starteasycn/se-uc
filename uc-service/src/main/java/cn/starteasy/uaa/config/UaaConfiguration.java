@@ -24,11 +24,14 @@ import org.springframework.security.oauth2.provider.token.store.KeyStoreKeyFacto
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletResponse;
+import javax.sql.DataSource;
 import java.security.KeyPair;
 
 @Configuration
 @EnableAuthorizationServer
 public class UaaConfiguration extends AuthorizationServerConfigurerAdapter {
+    @Inject
+    private DataSource dataSource;
 
     @EnableResourceServer
     public static class ResourceServerConfiguration extends ResourceServerConfigurerAdapter {
@@ -80,7 +83,7 @@ public class UaaConfiguration extends AuthorizationServerConfigurerAdapter {
 
         @Override
         public void configure(ResourceServerSecurityConfigurer resources) throws Exception {
-            resources.resourceId("jhipster-uaa").tokenStore(tokenStore);
+            resources.resourceId("res_seuaa").tokenStore(tokenStore);
         }
     }
 
@@ -89,16 +92,25 @@ public class UaaConfiguration extends AuthorizationServerConfigurerAdapter {
         /*
         @TODO this should be done by a ClientDetailsService (similar to UserDetailsService) with an consumable resource
          */
-        clients.inMemory()
-            .withClient("web_app")
-            .scopes("openid")
-            .autoApprove(true)
-            .authorizedGrantTypes("implicit","refresh_token", "password", "authorization_code")
-            .and()
-            .withClient("internal")
-            .secret("internal") //only for testing!!! @TODO config or details service..
-            .autoApprove(true)
-            .authorizedGrantTypes("implicit","refresh_token", "password", "authorization_code");
+        clients
+            .jdbc(dataSource);
+//            .and().inMemory()
+//            .withClient("web_app")
+//            .scopes("openid")
+//            .autoApprove(true)
+//            .authorizedGrantTypes("implicit","refresh_token", "password", "authorization_code");
+
+//            .inMemory()
+//            .withClient("web_app")
+//            .scopes("openid")
+//            .autoApprove(true)
+//            .authorizedGrantTypes("implicit","refresh_token", "password", "authorization_code")
+//            .and()
+//            .jdbc(dataSource);
+//            .withClient("internal")
+//            .secret("internal") //only for testing!!! @TODO config or details service..
+//            .autoApprove(true)
+//            .authorizedGrantTypes("implicit","refresh_token", "password", "authorization_code");
     }
 
     @Override
