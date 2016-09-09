@@ -28,7 +28,7 @@ import java.util.stream.Collectors;
 public class RegionResource {
 
     private final Logger log = LoggerFactory.getLogger(RegionResource.class);
-        
+
     @Inject
     private RegionService regionService;
 

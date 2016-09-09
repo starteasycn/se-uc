@@ -23,7 +23,7 @@ import java.util.stream.Collectors;
 public class RegionServiceImpl implements RegionService{
 
     private final Logger log = LoggerFactory.getLogger(RegionServiceImpl.class);
-    
+
     @Inject
     private RegionRepository regionRepository;
 
@@ -46,10 +46,10 @@ public class RegionServiceImpl implements RegionService{
 
     /**
      *  Get all the regions.
-     *  
+     *
      *  @return the list of entities
      */
-    @Transactional(readOnly = true) 
+    @Transactional(readOnly = true)
     public List<RegionDTO> findAll() {
         log.debug("Request to get all Regions");
         List<RegionDTO> result = regionRepository.findAll().stream()
@@ -65,7 +65,7 @@ public class RegionServiceImpl implements RegionService{
      *  @param id the id of the entity
      *  @return the entity
      */
-    @Transactional(readOnly = true) 
+    @Transactional(readOnly = true)
     public RegionDTO findOne(Long id) {
         log.debug("Request to get Region : {}", id);
         Region region = regionRepository.findOne(id);

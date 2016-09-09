@@ -20,7 +20,7 @@ public interface CountryService {
 
     /**
      *  Get all the countries.
-     *  
+     *
      *  @return the list of entities
      */
     List<CountryDTO> findAll();

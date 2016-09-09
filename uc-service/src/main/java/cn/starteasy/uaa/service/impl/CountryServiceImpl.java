@@ -23,7 +23,7 @@ import java.util.stream.Collectors;
 public class CountryServiceImpl implements CountryService{
 
     private final Logger log = LoggerFactory.getLogger(CountryServiceImpl.class);
-    
+
     @Inject
     private CountryRepository countryRepository;
 
@@ -46,10 +46,10 @@ public class CountryServiceImpl implements CountryService{
 
     /**
      *  Get all the countries.
-     *  
+     *
      *  @return the list of entities
      */
-    @Transactional(readOnly = true) 
+    @Transactional(readOnly = true)
     public List<CountryDTO> findAll() {
         log.debug("Request to get all Countries");
         List<CountryDTO> result = countryRepository.findAll().stream()
@@ -65,7 +65,7 @@ public class CountryServiceImpl implements CountryService{
      *  @param id the id of the entity
      *  @return the entity
      */
-    @Transactional(readOnly = true) 
+    @Transactional(readOnly = true)
     public CountryDTO findOne(Long id) {
         log.debug("Request to get Country : {}", id);
         Country country = countryRepository.findOne(id);

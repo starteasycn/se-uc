@@ -28,7 +28,7 @@ import java.util.stream.Collectors;
 public class CountryResource {
 
     private final Logger log = LoggerFactory.getLogger(CountryResource.class);
-        
+
     @Inject
     private CountryService countryService;
 

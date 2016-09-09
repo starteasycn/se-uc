@@ -28,37 +28,11 @@
                
 
 
-This application was generated using JHipster, you can find documentation and help at [https://jhipster.github.io](https://jhipster.github.io).
+1. 增加 oauth_client_details 表,用于管理第三方应用;
+2. 设置第三方的管理属性;(个人\团队\企业)
+3. 增加 用户 和 第三方应用的关系;
+4. 增加 云服务 列表  和   对应 云服务所需的角色;jhi_user_authority (access_token 包含 角色信息,这样 在调用云服务时  就可以匹配 是否可访问)
 
-## Development
-
-Before you can build this project, you must install and configure the following dependencies on your machine:
 
 
-## Building for production
 
-To optimize the seuaa client for production, run:
-
-    ./gradlew -Pprod clean bootRepackage
-
-To ensure everything worked, run:
-
-    java -jar build/libs/*.war
-
-## Continuous Integration
-
-To setup this project in Jenkins, use the following configuration:
-
-* Project name: `seuaa`
-* Source Code Management
-    * Git Repository: `git@github.com:xxxx/seuaa.git`
-    * Branches to build: `*/master`
-    * Additional Behaviours: `Wipe out repository & force clone`
-* Build Triggers
-    * Poll SCM / Schedule: `H/5 * * * *`
-* Build
-    * Invoke Gradle script / Use Gradle Wrapper / Tasks: `-Pprod clean test bootRepackage`
-* Post-build Actions
-    * Publish JUnit test result report / Test Report XMLs: `build/test-results/*.xml`
-
-[JHipster]: https://jhipster.github.io/

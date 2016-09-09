@@ -20,7 +20,7 @@ public interface RegionService {
 
     /**
      *  Get all the regions.
-     *  
+     *
      *  @return the list of entities
      */
     List<RegionDTO> findAll();
