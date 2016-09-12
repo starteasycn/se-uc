@@ -1,0 +1,136 @@
+/** 国家 */
+entity Country {
+	countryName String,
+    countryCode String
+}
+
+/** 省 */
+entity Province {
+	provinceName String,
+    provinceCode String
+}
+
+/** 市 */
+entity City {
+	cityName String,
+    cityCode String
+}
+
+/** 县 */
+entity County {
+	countyName String,
+    countyCode String
+}
+
+/** 区 */
+entity District {
+	districtName String,
+    districtCode String
+}
+
+entity BizUser {
+    userName String
+}
+
+entity ClientDetails {
+    clientId String
+}
+
+entity Authority {
+    authName String
+}
+
+//以下为企业相关模型
+/** 公司 */
+entity Company {
+	companyName String,
+    //注册地址
+    regAddress String,
+    //联系地址
+    linkAddress String,
+    //营业执照
+    businessLicense String,
+    //组织机构代码证
+    codeCertificate String,
+    orgType OrgType
+}
+
+entity Product {
+	productName String,
+    //注册地址
+    productCode String,
+    //网址
+    webSite String,
+    //描述
+    productDesc String
+}
+
+/**
+ * 员工，不是我们内部的一个用户，但他可以一键转换为一个用户.
+ */
+entity Employee {
+	/**
+	* The firstname attribute.
+	*/
+	firstName String,
+	lastName String,
+	email String,
+	phoneNumber String,
+	hireDate ZonedDateTime,
+	salary Long,
+	commissionPct Long
+}
+
+enum OrgType {
+    COMPANY, TEAM
+}
+
+relationship OneToOne {
+	Country{province} to Province
+}
+
+relationship OneToOne {
+	Province{city} to City
+}
+
+relationship OneToOne {
+	City{county} to County
+}
+
+relationship OneToOne {
+	County{district} to District
+}
+
+relationship OneToOne {
+	Company{province} to Province,
+    Company{city} to City,
+    Company{county} to County,
+    Company{district} to District
+}
+
+relationship ManyToMany {
+	Company{employee} to Employee{company},
+    Company{user} to BizUser{company},
+    Company{product} to Product{company}
+}
+
+relationship ManyToMany {
+	Product{clientDetails} to ClientDetails{product}
+}
+
+relationship ManyToMany {
+    Product{user} to BizUser{product},
+	BizUser{authority} to Authority{myUser}
+}
+
+
+// Set pagination options
+paginate * with infinite-scroll
+paginate * with pagination
+
+dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl
+// Set an angular suffix
+angularSuffix * with mySuffix

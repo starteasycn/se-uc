@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <!--
+        Added the constraints for entity BizUser.
+    -->
+    <changeSet id="20160912115054-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="biz_users_id"
+                                 baseTableName="biz_user_authority"
+                                 constraintName="fk_biz_user_authority_biz_users_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="biz_user"/>
+        <addForeignKeyConstraint baseColumnNames="authorities_id"
+                                 baseTableName="biz_user_authority"
+                                 constraintName="fk_biz_user_authority_authorities_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="authority"/>
+        
+    </changeSet>
+</databaseChangeLog>

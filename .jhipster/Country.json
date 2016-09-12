@@ -3,8 +3,8 @@
     "relationships": [
         {
             "relationshipType": "one-to-one",
-            "relationshipName": "region",
-            "otherEntityName": "region",
+            "relationshipName": "province",
+            "otherEntityName": "province",
             "otherEntityField": "id",
             "ownerSide": true,
             "otherEntityRelationshipName": "country"
@@ -14,11 +14,17 @@
         {
             "fieldName": "countryName",
             "fieldType": "String"
+        },
+        {
+            "fieldName": "countryCode",
+            "fieldType": "String"
         }
     ],
-    "changelogDate": "20160829150550",
+    "changelogDate": "20160912115049",
+    "javadoc": "国家",
     "entityTableName": "country",
     "dto": "mapstruct",
-    "pagination": "no",
-    "service": "serviceImpl"
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "angularSuffix": "mySuffix"
 }

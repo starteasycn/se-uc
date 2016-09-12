@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <!--
+        Added the constraints for entity Company.
+    -->
+    <changeSet id="20160912115057-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="province_id"
+                                 baseTableName="company"
+                                 constraintName="fk_company_province_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="province"/>
+
+        <addForeignKeyConstraint baseColumnNames="city_id"
+                                 baseTableName="company"
+                                 constraintName="fk_company_city_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="city"/>
+
+        <addForeignKeyConstraint baseColumnNames="county_id"
+                                 baseTableName="company"
+                                 constraintName="fk_company_county_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="county"/>
+
+        <addForeignKeyConstraint baseColumnNames="district_id"
+                                 baseTableName="company"
+                                 constraintName="fk_company_district_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="district"/>
+
+        <addForeignKeyConstraint baseColumnNames="companies_id"
+                                 baseTableName="company_employee"
+                                 constraintName="fk_company_employee_companies_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="company"/>
+        <addForeignKeyConstraint baseColumnNames="employees_id"
+                                 baseTableName="company_employee"
+                                 constraintName="fk_company_employee_employees_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="employee"/>
+        
+        <addForeignKeyConstraint baseColumnNames="companies_id"
+                                 baseTableName="company_user"
+                                 constraintName="fk_company_user_companies_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="company"/>
+        <addForeignKeyConstraint baseColumnNames="users_id"
+                                 baseTableName="company_user"
+                                 constraintName="fk_company_user_users_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="biz_user"/>
+        
+        <addForeignKeyConstraint baseColumnNames="companies_id"
+                                 baseTableName="company_product"
+                                 constraintName="fk_company_product_companies_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="company"/>
+        <addForeignKeyConstraint baseColumnNames="products_id"
+                                 baseTableName="company_product"
+                                 constraintName="fk_company_product_products_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="product"/>
+        
+    </changeSet>
+</databaseChangeLog>
